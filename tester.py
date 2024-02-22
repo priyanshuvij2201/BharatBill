@@ -24,7 +24,7 @@ def fetch_products(database_file):
             conn.close()
 
 # Ensure you have set your API key in an environment variable for better security
-api_key = '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'
+api_key = 'your-api-key'
 if not api_key:
     raise ValueError("No OpenAI API key found. Please set the OPENAI_API_KEY environment variable.")
 
