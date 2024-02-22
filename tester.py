@@ -9,7 +9,7 @@ def fetch_products(database_file):
         # Connect to the SQLite database
         conn = sqlite3.connect(database_file)
         cursor = conn.cursor()
-
+        
         # Fetch all products from the database
         cursor.execute("SELECT * FROM Products")
         products = cursor.fetchall()
