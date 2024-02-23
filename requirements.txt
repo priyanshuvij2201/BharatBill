@@ -1,5 +1,5 @@
 streamlit
 datetime
 openai
-sqlite3
-fitz 
+PyMuPDF==1.23.25
+ 
