@@ -7,7 +7,7 @@ from datetime import datetime
 
 # Environment Setup
 def get_api_key():
-    api_key = "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"
+    api_key = ""
     if not api_key:
         raise ValueError("No OpenAI API key found. Please set the OPENAI_API_KEY environment variable.")
     return api_key
@@ -235,7 +235,7 @@ def main():
     text = read_pdf_text(pdf_file)
     if text is not None:
         # Process text for product information
-        products_json =process_text_with_api(api_key, text, "Convert the following product data into a structured and JSON format The JSON is an array which should include fields for 'Product Name', 'HSN/SAC', 'Amount', 'Rate', 'Quantity', 'GST', and 'Rate Incl'. Each field's data type and calculation method are as follows: 'Product Name' is a string, 'HSN/SAC' is an int with an 8-digit code, 'Amount' is an int calculated as Rate * Quantity, 'Rate' is the price of the product without taxes, 'Quantity' is the number of products, 'GST' is the Goods and Services Tax in percentage, and 'Rate Incl' is the rate including GST percentage Please ensure the JSON output does not use anything as indices and follows the format strictly")
+        products_json =process_text_with_api(api_key, text, "Convert the following product data into a structured and JSON format The JSON is an array which should include fields for 'Product Name', 'HSN/SAC', 'Amount', 'Rate', 'Quantity', 'GST', and 'Rate Incl'. Each field's data type and calculation method are as follows: 'Product Name' is a string, 'HSN/SAC' is an int with an 8-digit code, 'Amount' is an int calculated as Rate * Quantity, 'Rate' is the price of the product without taxes, 'Quantity' is the number of products, 'GST' is the Goods and Services Tax in percentage, and 'Rate Incl' is the rate including GST percentage Please ensure the JSON output does not use anything as indices and follows the format strictly Return only the json structure and nothing else ")
         print("hello"+products_json)
         products_json=json.loads(products_json)
         if products_json:
@@ -243,7 +243,6 @@ def main():
     #     print(products_json)
 
         # Process text for seller information
-    conn.execute('''DELETE FROM products WHERE InvoiceID =6''')
     # Fetch and display products from the database
     if conn is not None:
         display_sellers(conn)
