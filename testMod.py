@@ -2,6 +2,7 @@ import fitz  # PyMuPDF
 import os
 import json
 import sqlite3
+import streamlit as st
 from openai import OpenAI
 from datetime import datetime
 
