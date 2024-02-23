@@ -4,3 +4,5 @@ openai
 PyMuPDF==1.23.25
 streamlit_login_auth_ui
 streamlit_option_menu
+argon2
+trycourier
