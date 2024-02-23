@@ -7,8 +7,7 @@ from datetime import datetime
 
 # Environment Setup
 def get_api_key():
-    api_key = "openai-api-key"
-    print(api_key)
+    api_key = "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"
     if not api_key:
         raise ValueError("No OpenAI API key found. Please set the OPENAI_API_KEY environment variable.")
     return api_key
@@ -124,10 +123,12 @@ def fetch_products(conn):
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM Products")
         products = cursor.fetchall()
-        for product in products:
-            print(product)
+        #for product in products:
+            #print(product)
+        return products
     except sqlite3.Error as e:
         print(f"Error fetching products: {e}")
+    
 
 def display_sellers(conn):
     print("Sellers:")
@@ -137,6 +138,7 @@ def display_sellers(conn):
     for seller in sellers:
         print(f"ID: {seller[0]}, Name: {seller[1]}")
     print()  # Print a newline for better readability
+    return sellers
 
 def display_invoices(conn):
     print("Invoices:")
@@ -148,9 +150,10 @@ def display_invoices(conn):
         JOIN Sellers ON Invoices.SellerID = Sellers.SellerID
     """)
     invoices = cursor.fetchall()
-    for invoice in invoices:
-        print(f"ID: {invoice[0]}, Number: {invoice[1]}, Date: {invoice[2]}, Seller: {invoice[3]}")
-    print()  # Print a newline for better readability
+    # for invoice in invoices:
+    #     print(f"ID: {invoice[0]}, Number: {invoice[1]}, Date: {invoice[2]}, Seller: {invoice[3]}")
+    # print()
+    return invoices  # Print a newline for better readability
 
 # PDF Processing
 def read_pdf_text(file_path):
