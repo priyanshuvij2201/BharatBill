@@ -1,1 +1,6 @@
-
+streamlit
+json
+datetime
+openai
+sqlite3
+fitz 
