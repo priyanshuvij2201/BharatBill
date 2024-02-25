@@ -8,7 +8,7 @@ from datetime import datetime
 
 # Environment Setup
 def get_api_key():
-    api_key = st.secrets["API_KEY"]
+    api_key = "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"
     if not api_key:
         raise ValueError("No OpenAI API key found. Please set the OPENAI_API_KEY environment variable.")
     return api_key
@@ -157,26 +157,26 @@ def display_invoices(conn):
     return invoices  # Print a newline for better readability
 
 # PDF Processing
-def read_pdf_text(file_path):
+def read_pdf_text(file_path,startText):
     with fitz.open(file_path) as pdf:
         text = ""
         for page in pdf:
             text += page.get_text()
 
 # Extract a portion of the text for demonstration
-    start = text.find('Sl')
+    start = text.find(startText)
     if start != -1:
         sample_text = text[start:start+3000]  # Show the first 1000 characters from where "Sl" is found
         return sample_text
 
-def read_sellerinfo(file_path):
+def read_sellerinfo(file_path,startText):
     with fitz.open(file_path) as pdf:
         text = ""
         for page in pdf:
             text += page.get_text()
 
 # Extract a portion of the text for demonstration
-    start = text.find('Sl')
+    start = text.find(startText)
     if start!= -1:
         extracted_text = text[:start]
         return extracted_text
@@ -205,7 +205,7 @@ def process_text_with_api(api_key, text, prompt):
 # Main Workflow
 def main():
     database_file = 'products3.db'
-    pdf_file = 'kp.pdf'
+    pdf_file = 'Iphone11Rashika.pdf'
     api_key = get_api_key()
 
     # Database setup
