@@ -45,7 +45,7 @@ if LOGGED_IN == True:
                 menu_title='Navigation',
                 menu_icon='list-columns-reverse',
                 icons=['file-earmark-text'],
-                options=['View Inventory''Upload Bill','View Inventory'],
+                options=['Upload Bill','View Inventory'],
                 styles={
                     "container": {"padding": "5px"},
                     "nav-link": {"font-size": "14px", "text-align": "left", "margin": "0px"}
