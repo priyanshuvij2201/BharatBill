@@ -26,7 +26,8 @@ def navigate_to_upload_page():
             if conn is not None:
                 tm.initialize_database(conn)
 
-            seller_info = json.loads(tm.process_text_with_api(api_key, tm.read_sellerinfo(pdf_file), "From the above data find the seller name their state , gstin ,invoice no and date of bill and give it in json format with field stricly as \"Seller Name\",\"State\",\"GSTIN/UIN\",\"Invoice No.\",\"Date of Bill\" " ))
+            startText="Sl"
+            seller_info = json.loads(tm.process_text_with_api(api_key, tm.read_sellerinfo(pdf_file,startText), "From the above data find the seller name their state , gstin ,invoice no and date of bill and give it in json format with field stricly as \"Seller Name\",\"State\",\"GSTIN/UIN\",\"Invoice No.\",\"Date of Bill\" " ))
 
             date_obj = tm.datetime.strptime(seller_info["Date of Bill"], "%d-%b-%y")
             # Format the datetime object into a string in the desired format (ISO 8601)
@@ -45,7 +46,7 @@ def navigate_to_upload_page():
             }
 
             # Read PDF
-            text = tm.read_pdf_text(pdf_file)
+            text = tm.read_pdf_text(pdf_file,startText)
             if text is not None:
                 # Process text for product information
                 products_json = tm.process_text_with_api(api_key, text, "Convert the following product data into a structured and JSON format The JSON is an array which should include fields for 'Product Name', 'HSN/SAC', 'Amount', 'Rate', 'Quantity', 'GST', and 'Rate Incl'. Each field's data type and calculation method are as follows: 'Product Name' is a string, 'HSN/SAC' is an int with an 8-digit code, 'Amount' is an int calculated as Rate * Quantity, 'Rate' is the price of the product without taxes, 'Quantity' is the number of products, 'GST' is the Goods and Services Tax in percentage, and 'Rate Incl' is the rate including GST percentage Please ensure the JSON output does not use anything as indices and follows the format strictly")
