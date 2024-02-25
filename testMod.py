@@ -2,12 +2,13 @@ import fitz  # PyMuPDF
 import os
 import json
 import sqlite3
+import streamlit as st
 from openai import OpenAI
 from datetime import datetime
 
 # Environment Setup
 def get_api_key():
-    api_key = "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"
+    api_key = st.secrets["API_KEY"]
     if not api_key:
         raise ValueError("No OpenAI API key found. Please set the OPENAI_API_KEY environment variable.")
     return api_key
