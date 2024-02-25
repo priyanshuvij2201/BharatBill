@@ -7,7 +7,7 @@ from datetime import datetime
 
 # Environment Setup
 def get_api_key():
-    api_key = "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"
+    api_key = "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"
     if not api_key:
         raise ValueError("No OpenAI API key found. Please set the OPENAI_API_KEY environment variable.")
     return api_key
