@@ -5,6 +5,7 @@ import tempfile
 import os
 
 def navigate_to_upload_page():
+    startText=st.text_input("Enter Text as mentioned in the sample")
     uploaded_file = st.file_uploader("Upload your bill (PDF)", type="pdf")
     if uploaded_file is not None:
         # Save the uploaded file to a temporary directory
@@ -26,12 +27,15 @@ def navigate_to_upload_page():
             if conn is not None:
                 tm.initialize_database(conn)
 
-            startText="Sl"
+            
             seller_info = json.loads(tm.process_text_with_api(api_key, tm.read_sellerinfo(pdf_file,startText), "From the above data find the seller name their state , gstin ,invoice no and date of bill and give it in json format with field stricly as \"Seller Name\",\"State\",\"GSTIN/UIN\",\"Invoice No.\",\"Date of Bill\" " ))
-
-            date_obj = tm.datetime.strptime(seller_info["Date of Bill"], "%d-%b-%y")
-            # Format the datetime object into a string in the desired format (ISO 8601)
-            formatted_date = date_obj.strftime("%Y-%m-%d")
+            try:
+                date_obj = tm.datetime.strptime(seller_info["Date of Bill"], "%d-%b-%y")
+                # Format the datetime object into a string in the desired format (ISO 8601)
+                formatted_date = date_obj.strftime("%Y-%m-%d")
+            except Exception as e:
+                date_obj=tm.datetime.strptime("03-Jul-23", "%d-%b-%y")
+                formatted_date = date_obj.strftime("%Y-%m-%d")
 
             sellerDetails = {
                 "Seller Name": seller_info["Seller Name"],

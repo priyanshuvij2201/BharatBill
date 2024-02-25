@@ -8,7 +8,7 @@ from datetime import datetime
 
 # Environment Setup
 def get_api_key():
-    api_key = "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"
+    api_key = st.secrets["API_KEY"]
     if not api_key:
         raise ValueError("No OpenAI API key found. Please set the OPENAI_API_KEY environment variable.")
     return api_key
@@ -162,7 +162,7 @@ def read_pdf_text(file_path,startText):
         text = ""
         for page in pdf:
             text += page.get_text()
-
+    print(startText+"Hello")
 # Extract a portion of the text for demonstration
     start = text.find(startText)
     if start != -1:
@@ -174,7 +174,7 @@ def read_sellerinfo(file_path,startText):
         text = ""
         for page in pdf:
             text += page.get_text()
-
+    print(startText)
 # Extract a portion of the text for demonstration
     start = text.find(startText)
     if start!= -1:
