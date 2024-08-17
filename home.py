@@ -2,25 +2,7 @@ import streamlit as st
 import upload_bill
 import view_inventory
 
-# Create an instance of the login authentication UI
-# __login__obj = __login__(
-#     auth_token="pk_prod_03KD363E3G4QBMQ8QCM1CS8VN8WB", 
-#     company_name="VyaparTracker",
-#     width=200, 
-#     height=250, 
-#     logout_button_name='Logout', 
-#     hide_menu_bool=False, 
-#     hide_footer_bool=False, 
-#     lottie_url='https://assets2.lottiefiles.com/packages/lf20_jcikwtux.json'
-# )
-
-# # Build the login UI and check if the user is logged in
-# LOGGED_IN = __login__obj.build_login_ui()
-
-# # If user is logged in, display the rest of the application
-# if LOGGED_IN == True:
-
-    # Define CSS style for centering text horizontally and vertically
+# Define CSS style for centering text horizontally and vertically
 centered_style = """
     <style>
     .centered {
@@ -52,13 +34,19 @@ def homepage():
 
 # Main function to run the Streamlit app
 def main():
-    #homepage()
-    main_page_sidebar,selected_option=nav_sidebar()
-    if selected_option=="Upload Bill":
-        upload_bill.navigate_to_upload_page()
-    if selected_option=="View Inventory":
-        view_inventory.view_seller()
+    # Set the homepage title
+    st.title("VyaparTracker")
 
+    # Add buttons for navigation
+    col1, col2 = st.columns(2)
+
+    with col1:
+        if st.button("Upload Bill"):
+            upload_bill.navigate_to_upload_page()
+
+    with col2:
+        if st.button("View Inventory"):
+            view_inventory.view_seller()
 
 if __name__ == "__main__":
     main()
