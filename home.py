@@ -33,25 +33,6 @@ centered_style = """
     </style>
 """
 
-def nav_sidebar():
-    """
-    Creates the side navigation bar
-    """
-    main_page_sidebar = st.sidebar.empty()
-    with main_page_sidebar:
-        selected_option_view_inventory = option_menu(
-            menu_title='Navigation',
-            menu_icon='list-columns-reverse',
-            icons=['file-earmark-text'],
-            options=['Upload Bill','View Inventory'],
-            styles={
-                "container": {"padding": "5px"},
-                "nav-link": {"font-size": "14px", "text-align": "left", "margin": "0px"}
-            },
-            key="view_inventory_option"
-        )
-    return main_page_sidebar, selected_option_view_inventory
-
 # Streamlit home page layout
 def homepage():
     # Apply CSS style for centering text
