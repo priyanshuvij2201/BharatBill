@@ -1,6 +1,4 @@
 import streamlit as st
-from streamlit_login_auth_ui.widgets import __login__  # Assuming you have this module installed and imported correctly
-from streamlit_option_menu import option_menu
 import upload_bill
 import view_inventory
 
